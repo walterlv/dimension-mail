@@ -7,123 +7,54 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="NavigationMenuItemDataTemplate" x:DataType="local:ShellNavigationItem">
-            <Grid Width="320" Height="40">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="48" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Rectangle
-                        Width="6"
-                        Height="24"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Fill="{ThemeResource SystemControlForegroundAccentBrush}"
-                        Visibility="{x:Bind SelectedVis, Mode=OneWay}" />
-                <Viewbox
-                        Child="{x:Bind Icon}"
-                        Margin="16,12"
-                        VerticalAlignment="Center" />
-                <TextBlock
-                        Grid.Column="1"
-                        Margin="0,9,0,11"
-                        VerticalAlignment="Center"
-                        Foreground="{x:Bind SelectedForeground, Mode=OneWay}"
-                        Text="{x:Bind Label}"
-                        Style="{StaticResource BodyTextBlockStyle}"
-                        TextTrimming="None" />
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal">
-                            <Storyboard>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="PointerOver">
-                            <Storyboard>
-                                <DoubleAnimation
-                                    Storyboard.TargetName="BorderBackground"
-                                    Storyboard.TargetProperty="Opacity"
-                                    To="1"
-                                    Duration="0" />
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground" Storyboard.TargetProperty="Fill">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightListLowBrush}" />
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Pressed">
-                            <Storyboard>
-                                <DoubleAnimation
-                                    Storyboard.TargetName="BorderBackground"
-                                    Storyboard.TargetProperty="Opacity"
-                                    To="1"
-                                    Duration="0" />
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground" Storyboard.TargetProperty="Fill">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightListMediumBrush}" />
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerDownThemeAnimation TargetName="ContentPresenter" />
-                            </Storyboard>
-                        </VisualState>
-                    </VisualStateGroup>
-                    <VisualStateGroup x:Name="DisabledStates">
-                        <VisualState x:Name="Enabled" />
-                        <VisualState x:Name="Disabled">
-                            <Storyboard>
-                                <DoubleAnimation
-                                    Storyboard.TargetName="ContentBorder"
-                                    Storyboard.TargetProperty="Opacity"
-                                    To="{ThemeResource ListViewItemDisabledThemeOpacity}"
-                                    Duration="0" />
-                            </Storyboard>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-            </Grid>
-        </DataTemplate>
+        <Style TargetType="PivotHeaderItem">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="Margin" Value="0 0 -8 0"/>
+        </Style>
+        <Style TargetType="PivotItem">
+            <Setter Property="Margin" Value="0 -10 0 0"/>
+        </Style>
+        <Style TargetType="ListViewItem">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0 0 0 1"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="#FF2F2F2F" TintOpacity="0.6" FallbackColor="#FF3F3F3F"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
-    <controls:HamburgerMenu
-            x:Name="NavigationMenu"
-            DisplayMode="{x:Bind DisplayMode, Mode=OneWay}"
-            IsPaneOpen="{x:Bind IsPaneOpen, Mode=TwoWay}"
-            ItemTemplate="{StaticResource NavigationMenuItemDataTemplate}"
-            ItemsSource="{x:Bind PrimaryItems}"
-            OptionsItemTemplate="{StaticResource NavigationMenuItemDataTemplate}"
-            OptionsItemsSource="{x:Bind SecondaryItems}"
-            ItemClick="ItemClicked"
-            OptionsItemClick="ItemClicked"
-            PaneBackground="{ThemeResource SystemControlBackgroundAltHighBrush}"
-            PaneForeground="{ThemeResource SystemControlForegroundBaseHighBrush}"
-            >
-        <Grid Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+    <SplitView IsPaneOpen="True" OpenPaneLength="240" DisplayMode="Inline">
+        <SplitView.Content>
             <Frame x:Name="shellFrame"/>
-        </Grid>
-        <!--  Adaptive triggers  -->
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="WindowStates" CurrentStateChanged="WindowStates_CurrentStateChanged">
-                <VisualState x:Name="PanoramicState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1024"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="WideState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-    </controls:HamburgerMenu>
+        </SplitView.Content>
+        <SplitView.Pane>
+            <Grid RequestedTheme="Dark">
+                <Grid.Background>
+                    <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="#FF1F1F1F" TintOpacity="0.8" FallbackColor="#FF2F2F2F"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="31"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Dimension Mail" FontSize="14" VerticalAlignment="Center" Margin="16 0"/>
+                <Pivot Grid.Row="1" Padding="0" Margin="0">
+                    <PivotItem Header="MAIL">
+                        <ListView>
+                            <ListViewItem Height="40">Concentrate</ListViewItem>
+                            <ListViewItem Height="40">xblero@gmail.com</ListViewItem>
+                        </ListView>
+                    </PivotItem>
+                    <PivotItem Header="TASK">
+                    </PivotItem>
+                    <PivotItem Header="ME">
+                    </PivotItem>
+                </Pivot>
+            </Grid>
+        </SplitView.Pane>
+    </SplitView>
 </Page>

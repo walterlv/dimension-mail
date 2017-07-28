@@ -10,7 +10,7 @@ using Walterlv.Mail.Services;
 
 namespace Walterlv.Mail.Views
 {
-    public sealed partial class MasterDetailPage : Page, INotifyPropertyChanged
+    public sealed partial class MailBoxPage : Page, INotifyPropertyChanged
     {
         private Order _selected;
         public Order Selected
@@ -21,7 +21,7 @@ namespace Walterlv.Mail.Views
 
         public ObservableCollection<Order> SampleItems { get; private set; } = new ObservableCollection<Order>();
 
-        public MasterDetailPage()
+        public MailBoxPage()
         {
             InitializeComponent();
         }

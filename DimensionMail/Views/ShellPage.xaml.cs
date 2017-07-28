@@ -2,9 +2,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Core;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Walterlv.Mail.Helpers;
 using Walterlv.Mail.Services;
 
 namespace Walterlv.Mail.Views
@@ -51,32 +55,21 @@ namespace Walterlv.Mail.Views
         {
             InitializeComponent();
             DataContext = this;
-            Initialize();
-        }
 
-        private void Initialize()
-        {
             NavigationService.Frame = shellFrame;
             NavigationService.Frame.Navigated += NavigationService_Navigated;
             PopulateNavItems();
 
-            InitializeState(Window.Current.Bounds.Width);
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+
+            NavigationService.Navigate(typeof(MailBoxPage));
         }
-        
-        private void InitializeState(double windowWith)
+
+        private void Initialize()
         {
-            if (windowWith < WideStateMinWindowWidth)
-            {
-                GoToState(NarrowStateName);
-            }
-            else if (windowWith < PanoramicStateMinWindowWidth)
-            {
-                GoToState(WideStateName);
-            }
-            else
-            {
-                GoToState(PanoramicStateName);
-            }
         }
 
         private void PopulateNavItems()
@@ -90,7 +83,7 @@ namespace Walterlv.Mail.Views
             // Edit String/en-US/Resources.resw: Add a menu item title for each page
             _primaryItems.Add(ShellNavigationItem.FromType<MainPage>("Shell_Main".GetLocalized(), Symbol.Document));
             _primaryItems.Add(ShellNavigationItem.FromType<WebViewPage>("Shell_WebView".GetLocalized(), Symbol.Document));
-            _primaryItems.Add(ShellNavigationItem.FromType<MasterDetailPage>("Shell_MasterDetail".GetLocalized(), Symbol.Document));
+            _primaryItems.Add(ShellNavigationItem.FromType<MailBoxPage>("Shell_MasterDetail".GetLocalized(), Symbol.Document));
             _secondaryItems.Add(ShellNavigationItem.FromType<SettingsPage>("Shell_Settings".GetLocalized(), Symbol.Setting));
         }
 
