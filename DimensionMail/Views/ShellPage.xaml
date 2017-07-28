@@ -17,14 +17,22 @@
         <Style TargetType="PivotItem">
             <Setter Property="Margin" Value="0 -10 0 0"/>
         </Style>
-        <Style TargetType="ListViewItem">
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="0 -1 0 0"/>
+        </Style>
+        <Style TargetType="ListViewHeaderItem">
             <Setter Property="Height" Value="40"/>
-            <Setter Property="Margin" Value="0 0 0 1"/>
+            <Setter Property="Margin" Value="0 1 0 0"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="#FF2F2F2F" TintOpacity="0.6" FallbackColor="#FF3F3F3F"/>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style TargetType="ListViewItem">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0 1 0 0"/>
+            <Setter Property="Background" Value="Transparent"/>
         </Style>
     </Page.Resources>
 
@@ -45,8 +53,14 @@
                 <Pivot Grid.Row="1" Padding="0" Margin="0">
                     <PivotItem Header="MAIL">
                         <ListView>
-                            <ListViewItem Height="40">Concentrate</ListViewItem>
-                            <ListViewItem Height="40">xblero@gmail.com</ListViewItem>
+                            <ListViewItem>Concentrate</ListViewItem>
+                            <ListViewItem>Confluence</ListViewItem>
+                            <ListViewItem>Git</ListViewItem>
+                            <ListViewItem>GitHub</ListViewItem>
+                            <ListViewItem>Tweeter</ListViewItem>
+                            <ListViewItem>Gmail</ListViewItem>
+                            <ListViewItem>walterlv@outlook.com</ListViewItem>
+                            <ListViewItem>xblero@gmail.com</ListViewItem>
                         </ListView>
                     </PivotItem>
                     <PivotItem Header="TASK">
