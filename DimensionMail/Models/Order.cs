@@ -1,6 +1,6 @@
 using System;
 
-namespace DimensionMail.Models
+namespace Walterlv.Mail.Models
 {
     // TODO WTS: This is used by the Sample Grid Data. Remove this once your grid page is displaying real data
     public class Order

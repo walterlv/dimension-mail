@@ -1,11 +1,9 @@
 using System;
 using System.Threading.Tasks;
-
-using DimensionMail.Services;
-
 using Windows.ApplicationModel.Activation;
+using Walterlv.Mail.Services;
 
-namespace DimensionMail.Activation
+namespace Walterlv.Mail.Activation
 {
     internal class DefaultLaunchActivationHandler : ActivationHandler<LaunchActivatedEventArgs>
     {

@@ -1,8 +1,6 @@
-using System.Runtime.InteropServices;
-
 using Windows.ApplicationModel.Resources;
 
-namespace DimensionMail.Helpers
+namespace Walterlv.Mail.Helpers
 {
     internal static class ResourceExtensions
     {

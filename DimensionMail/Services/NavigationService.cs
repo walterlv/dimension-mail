@@ -1,10 +1,9 @@
 using System;
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace DimensionMail.Services
+namespace Walterlv.Mail.Services
 {
     public static class NavigationService
     {

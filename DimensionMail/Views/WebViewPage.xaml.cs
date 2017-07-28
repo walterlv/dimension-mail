@@ -1,11 +1,10 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace DimensionMail.Views
+namespace Walterlv.Mail.Views
 {
     public sealed partial class WebViewPage : Page, INotifyPropertyChanged
     {

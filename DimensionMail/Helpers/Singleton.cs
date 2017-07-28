@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 
-namespace DimensionMail.Helpers
+namespace Walterlv.Mail.Helpers
 {
     internal static class Singleton<T> where T : new()
     {

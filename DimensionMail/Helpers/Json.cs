@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
-
 using Newtonsoft.Json;
 
-namespace DimensionMail.Helpers
+namespace Walterlv.Mail.Helpers
 {
     public static class Json
     {

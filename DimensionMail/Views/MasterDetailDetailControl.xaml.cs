@@ -1,9 +1,8 @@
-using DimensionMail.Models;
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Walterlv.Mail.Models;
 
-namespace DimensionMail.Views
+namespace Walterlv.Mail.Views
 {
     public sealed partial class MasterDetailDetailControl : UserControl
     {

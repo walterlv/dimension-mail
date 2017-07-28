@@ -2,15 +2,12 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-
-using DimensionMail.Helpers;
-using DimensionMail.Services;
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Walterlv.Mail.Services;
 
-namespace DimensionMail.Views
+namespace Walterlv.Mail.Views
 {
     public sealed partial class ShellPage : Page, INotifyPropertyChanged
     {

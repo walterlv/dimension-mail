@@ -1,11 +1,10 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-
 using Windows.Storage;
 using Windows.Storage.Streams;
 
-namespace DimensionMail.Helpers
+namespace Walterlv.Mail.Helpers
 {
     public static class SettingsStorageExtensions
     {

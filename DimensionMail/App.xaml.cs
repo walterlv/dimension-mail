@@ -1,11 +1,10 @@
 using System;
-
-using DimensionMail.Services;
-
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
+using Walterlv.Mail.Services;
+using Walterlv.Mail.Views;
 
-namespace DimensionMail
+namespace Walterlv.Mail
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -51,7 +50,7 @@ namespace DimensionMail
             
         private ActivationService CreateActivationService()
         {
-            return new ActivationService(this, typeof(Views.MainPage), new Views.ShellPage());
+            return new ActivationService(this, typeof(MainPage), new ShellPage());
         }
     }
 }

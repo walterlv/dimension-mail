@@ -3,14 +3,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-
-using DimensionMail.Models;
-using DimensionMail.Services;
-
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Walterlv.Mail.Models;
+using Walterlv.Mail.Services;
 
-namespace DimensionMail.Views
+namespace Walterlv.Mail.Views
 {
     public sealed partial class MasterDetailPage : Page, INotifyPropertyChanged
     {
@@ -53,7 +51,7 @@ namespace DimensionMail.Views
             {
                 if (WindowStates.CurrentState == NarrowState)
                 {
-                    NavigationService.Navigate<Views.MasterDetailDetailPage>(item);
+                    NavigationService.Navigate<MasterDetailDetailPage>(item);
                 }
                 else
                 {

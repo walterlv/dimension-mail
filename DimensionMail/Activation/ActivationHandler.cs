@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace DimensionMail.Activation
+namespace Walterlv.Mail.Activation
 {
     //For more information on application activation see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/activation.md
     internal abstract class ActivationHandler

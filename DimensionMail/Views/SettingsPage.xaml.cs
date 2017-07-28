@@ -1,13 +1,11 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using DimensionMail.Services;
-
 using Windows.ApplicationModel;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Walterlv.Mail.Services;
 
-namespace DimensionMail.Views
+namespace Walterlv.Mail.Views
 {
     public sealed partial class SettingsPage : Page, INotifyPropertyChanged
     {

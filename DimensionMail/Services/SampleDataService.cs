@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Walterlv.Mail.Models;
 
-using DimensionMail.Models;
-
-namespace DimensionMail.Services
+namespace Walterlv.Mail.Services
 {
     // This class holds sample data used by some generated pages to show how they can be used.
     // TODO WTS: Delete this file once your app is using real data.

@@ -1,12 +1,10 @@
 using System;
 using System.Threading.Tasks;
-
-using DimensionMail.Helpers;
-
 using Windows.Storage;
 using Windows.UI.Xaml;
+using Walterlv.Mail.Helpers;
 
-namespace DimensionMail.Services
+namespace Walterlv.Mail.Services
 {
     public static class ThemeSelectorService
     {
